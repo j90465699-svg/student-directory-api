@@ -5,6 +5,7 @@ console.log("Current directory:", process.cwd());
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const studentRoutes = require("./routes/students");
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use("/api/auth", authRoutes);
 app.use("/api/students", studentRoutes);
 
